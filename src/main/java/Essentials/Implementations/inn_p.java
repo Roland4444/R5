@@ -8,13 +8,12 @@ public class inn_p  extends inn {
 
     }
 
-    public boolean control() {
-
+    public int control() {
         if (this.value.length() != 12)
-            return false;
+            return 1;
         if ((this.value.charAt(0) == '0') && (this.value.charAt(1) == '0'))
-            return false;
-        return true;
+            return 2;
+        return 0;
     }
 
 }

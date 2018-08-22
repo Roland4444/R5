@@ -17,24 +17,23 @@ public class inn_u extends inn  {
         this.isForeign=foreign;
     }
 
-    public boolean control(){
-        for (int i=0; i<this.value.length();i++)
-        if (!isnumber(this.value))
-           return false;
+    public int control(){
+       if (!isnumber(this.value))
+           return 1;
 
         if (!this.isForeign){
             if (this.value.length() != 10)
-                return false;
+                return 2;
 
             if ((this.value.charAt(0)=='0') && (this.value.charAt(1)=='0'))
-                return false;
-            return true;
+                return 3;
+            return 0;
         }
         if (this.value.length() != 5)
-            return false;
+            return 4;
         if (this.value.equals("00000"))
-            return false;
-        return true;
+            return 5;
+        return 0;
     }
 
 
