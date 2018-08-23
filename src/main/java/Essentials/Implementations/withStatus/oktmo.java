@@ -3,8 +3,14 @@ package Essentials.Implementations.withStatus;
 import Essentials.Specifications.requisitesWStatus;
 
 public class oktmo extends requisitesWStatus {
-    public oktmo(String value, boolean status){
+    public oktmo (String value, boolean status){
         this.value=value;
+        this.status=status;
+    }
+
+    public oktmo(boolean status, boolean isNull){
+        this.value="0";
+        this.isNull=isNull;
         this.status=status;
     }
 
@@ -12,6 +18,10 @@ public class oktmo extends requisitesWStatus {
     public int control(){
         if (!this.status)
             return 0;
+        if (isNull){
+            this.value="0";
+            return 0;
+        }
         if (!isnumber(this.value))
             return 1;
         if (this.value.length() != 20)
