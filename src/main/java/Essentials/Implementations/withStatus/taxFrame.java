@@ -1,8 +1,7 @@
 package Essentials.Implementations.withStatus;
 
-import Essentials.Specifications.requisitesWStatus;
+import Essentials.Specifications.reqs.requisitesWStatus;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class taxFrame extends requisitesWStatus {

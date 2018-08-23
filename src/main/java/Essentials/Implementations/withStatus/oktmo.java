@@ -1,6 +1,6 @@
 package Essentials.Implementations.withStatus;
 
-import Essentials.Specifications.requisitesWStatus;
+import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class oktmo extends requisitesWStatus {
     public oktmo (String value, boolean status){

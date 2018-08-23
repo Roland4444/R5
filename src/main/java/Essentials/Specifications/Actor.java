@@ -1,7 +1,7 @@
 package Essentials.Specifications;
 
 import Essentials.Implementations.BankReqs;
-import Essentials.Implementations.kpp;
+import Essentials.Implementations.reqs.kpp;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,7 @@
 package Essentials.Implementations;
 
 import Essentials.Dictionary.Dictionary4Requisites;
+import Essentials.Implementations.reqs.typePayment;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

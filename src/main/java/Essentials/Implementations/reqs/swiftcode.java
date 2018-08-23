@@ -1,6 +1,6 @@
-package Essentials.Implementations;
+package Essentials.Implementations.reqs;
 
-import Essentials.Specifications.requisites;
+import Essentials.Specifications.reqs.requisites;
 
 public class swiftcode extends requisites {
     @Override

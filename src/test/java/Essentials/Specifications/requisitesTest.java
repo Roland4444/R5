@@ -1,5 +1,6 @@
 package Essentials.Specifications;
 
+import Essentials.Specifications.reqs.requisites;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class requisitesTest {
         assertEquals(false, req.isnumber("221312fffff3"));
     }
 
-    class testreq extends requisites{
+    class testreq extends requisites {
         public int control(){
             return 0;
         }

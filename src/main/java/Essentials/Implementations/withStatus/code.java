@@ -1,6 +1,6 @@
 package Essentials.Implementations.withStatus;
 
-import Essentials.Specifications.requisitesWStatus;
+import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class code extends requisitesWStatus {
     public code (String value, boolean status){

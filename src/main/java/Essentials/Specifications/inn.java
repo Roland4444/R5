@@ -1,6 +1,8 @@
 package Essentials.Specifications;
 
-public abstract class inn  extends requisites{
+import Essentials.Specifications.reqs.requisites;
+
+public abstract class inn  extends requisites {
 
 
 

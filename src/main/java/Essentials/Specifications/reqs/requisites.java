@@ -1,4 +1,4 @@
-package Essentials.Specifications;
+package Essentials.Specifications.reqs;
 
 import java.util.HashMap;
 import java.util.Map;
