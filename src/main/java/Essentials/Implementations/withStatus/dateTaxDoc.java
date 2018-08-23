@@ -40,23 +40,15 @@ public class dateTaxDoc extends requisitesWStatus {
     }
 
     public boolean isThisDateValid(String dateToValidate, String dateFromat){
-
-        if(dateToValidate == null){
+        if(dateToValidate == null)
             return false;
-        }
 
         SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
         sdf.setLenient(false);
-
         try {
-
-            //if not valid, it will throw ParseException
             Date date = sdf.parse(dateToValidate);
-            System.out.println(date);
-
-        } catch (ParseException e) {
-
-            e.printStackTrace();
+        }
+         catch (ParseException e) {
             return false;
         }
 

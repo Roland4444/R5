@@ -4,8 +4,10 @@ import Essentials.Specifications.requisites;
 
 public class kpp extends requisites {
     public kpp(String value){
-        this.value=value;
+        this.value = value;
     }
+
+
     public int control(){
         if (!isnumber(this.value))
            return 1;

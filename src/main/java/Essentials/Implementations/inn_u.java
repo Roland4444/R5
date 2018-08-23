@@ -1,9 +1,8 @@
+
 package Essentials.Implementations;
 
 import Essentials.Specifications.inn;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class inn_u extends inn  {
     public boolean isForeign=false;
