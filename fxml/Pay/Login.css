@@ -1,0 +1,40 @@
+
+.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.label2 {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.header{
+-fx-text-fill: #000000;
+-fx-font-size: 18px;
+-fx-color: #ffffff;
+}
+
+.actorName{
+-fx-text-fill: #000000;
+-fx-font-size: 18px;
+-fx-color: #ffffff;
+}
+
+.desc{
+-fx-text-fill: #000000;
+-fx-font-size: 12px;
+-fx-color: #ffffff;
+}
+
+.button1{
+    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 5;
+}

@@ -1,9 +1,10 @@
 package Essentials.Specifications.reqs;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class requisites {
+public abstract class requisites implements Serializable {
 
     public String value=null;
     public Map<Character, Integer> dictionary;

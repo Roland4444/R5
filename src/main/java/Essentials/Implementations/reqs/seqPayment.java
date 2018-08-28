@@ -3,6 +3,10 @@ package Essentials.Implementations.reqs;
 import Essentials.Specifications.reqs.requisites;
 
 public class seqPayment  extends requisites {
+    public seqPayment() {
+        this.value = null;
+    }
+
     public seqPayment(String value) {
         this.value = value;
     }

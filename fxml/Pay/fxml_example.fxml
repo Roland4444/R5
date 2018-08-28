@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.collections.FXCollections?>
+<GridPane alignment="TOP_CENTER" hgap="15" styleClass="root" vgap="15" xmlns:fx="http://javafx.com/fxml/1"
+          xmlns="http://javafx.com/javafx/8" fx:controller="Services.all.Pay.UI.Controller">
+
+    <padding><Insets bottom="10" left="55" right="5" top="45" /></padding>
+    <children>
+        <Label styleClass="header" text="Платежное поручение" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+        <Label styleClass="actorName" text="Плательщик" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="1" />
+
+        <Label styleClass="actorName" text="Получатель" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="1" />
+
+        <Label styleClass="desc" text="Наименование" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="2" />
+        <TextField fx:id="name_payer" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label styleClass="desc" text="ИНН" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="3" />
+        <TextField fx:id="inn_payer" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label styleClass="desc" text="КПП" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="4" />
+        <TextField fx:id="kpp_payer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label styleClass="desc" text="Номер счета" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="5" />
+        <TextField fx:id="number_acc_payer" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+        <Label styleClass="desc" text="Банк плательшика" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="6" />
+        <TextField fx:id="bank_name_payer" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+        <Label styleClass="desc" text="Адрес банка плательшика" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="7" />
+        <TextField fx:id="bank_adress_payer" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+        <Label styleClass="desc" text="БИК банка плательшика" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="8" />
+        <TextField fx:id="bank_bik_payer" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+        <Label styleClass="desc" text="Коррсчет банка плательшика" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="9" />
+        <TextField fx:id="bank_corr_payer" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+
+
+        <Label styleClass="desc" text="Наименование" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="2" />
+        <TextField fx:id="name_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+
+        <Label styleClass="desc" text="ИНН" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="3" />
+        <TextField fx:id="inn_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+
+        <Label styleClass="desc" text="КПП" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="4" />
+        <TextField fx:id="kpp_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+
+        <Label styleClass="desc" text="Номер счета" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="5" />
+        <TextField fx:id="accnumber_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+
+        <Label styleClass="desc" text="Банк получателя" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="6" />
+        <TextField fx:id="bank_name_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+
+        <Label styleClass="desc" text="Адрес банка получателя" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="7" />
+        <TextField fx:id="bank_adress_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+
+        <Label styleClass="desc" text="БИК банка получателя" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="8" />
+        <TextField fx:id="bank_bik_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+
+        <Label styleClass="desc" text="Коррсчет банка плательшика" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="9" />
+        <TextField fx:id="bank_corrnumber_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+
+        <Label styleClass="desc" text="КБК получателя" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="10" />
+        <TextField fx:id="bank_kbk_beneficiar" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+
+        <Label styleClass="desc" text="ОКТМО" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="11" />
+        <TextField fx:id="oktmo" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+
+        <Label styleClass="desc" text="ОП" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="12" />
+        <TextField fx:id="OP" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+
+        <Label styleClass="desc" text="Налоговый период" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="13" />
+        <TextField fx:id="tax_period" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+
+        <Label styleClass="desc" text="Срок платежа" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="14" />
+        <DatePicker fx:id="time_pay" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+
+        <Label fx:id="chf" styleClass="desc" text="Очер. платежа" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="15" />
+        <ComboBox fx:id="seq_pay" prefHeight="20.0" prefWidth="70.0" GridPane.columnIndex="3" GridPane.rowIndex="15" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                    <String fx:value="4" />
+                    <String fx:value="5" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="17" GridPane.columnSpan="10">
+            <children>
+                <Button onAction="#SaveModel" prefWidth="100.0" styleClass="button1" text="SaveModel" />
+                <Button onAction="#LoadModel" prefWidth="100.0" styleClass="button1" text="LoadModel" />
+            </children>
+        </HBox>
+
+        <Label styleClass="desc" text="Сумма транзакции" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="10" />
+        <TextField fx:id="summ" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+
+        <Label styleClass="desc" text="Cтатус составителя" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="11" />
+        <TextField fx:id="status" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+
+        <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="18" text="67675766575757567656656757" />
+        <Button  text="Button" GridPane.rowIndex="14" onAction="#alarm"/>
+    </children>
+
+    <stylesheets>
+        <URL value="@Login.css" />
+    </stylesheets>
+
+
+</GridPane>

@@ -1,6 +1,8 @@
 package Essentials.Implementations;
 
-public class summTransaction {
-    Integer rubles;
-    Integer cents;
+import java.io.Serializable;
+
+public class summTransaction implements Serializable {
+    public Integer rubles;
+    public Integer cents;
 }

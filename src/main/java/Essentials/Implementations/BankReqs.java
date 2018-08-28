@@ -1,10 +1,16 @@
 package Essentials.Implementations;
 
-import Essentials.Implementations.reqs.NameBank;
-import Essentials.Implementations.reqs.accNumber;
-import Essentials.Implementations.reqs.addressBank;
+import Essentials.Implementations.reqs.*;
 
 public class BankReqs {
+    public BankReqs(){
+        this.namebank=new NameBank();
+        this.corr_accnumber=new accNumber();
+        this.bik=new bik();
+        this.addressbank=new addressBank();
+        this.accNumber=new accNumber();
+        this.swiftcode=new swiftcode();
+    }
     public NameBank namebank;
     public addressBank addressbank;
     public accNumber accNumber;

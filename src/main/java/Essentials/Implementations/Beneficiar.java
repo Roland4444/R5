@@ -2,5 +2,7 @@ package Essentials.Implementations;
 
 import Essentials.Specifications.Actor;
 
-public class Beneficiar extends Actor {
+import java.io.Serializable;
+
+public class Beneficiar extends Actor implements Serializable {
 }

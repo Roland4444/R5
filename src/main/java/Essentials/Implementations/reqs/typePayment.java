@@ -3,6 +3,10 @@ package Essentials.Implementations.reqs;
 import Essentials.Specifications.reqs.requisites;
 
 public class typePayment extends requisites {
+    public typePayment(){
+        this.value=null;
+    }
+
     public typePayment(String value){
         this.value = value;
     }
