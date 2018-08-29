@@ -5,6 +5,9 @@ import Essentials.Specifications.reqs.requisitesWStatus;
 import java.util.Map;
 
 public class taxFrame extends requisitesWStatus {
+    public taxFrame(){
+
+    }
     public Map<Character, Integer> dictNumbers ;
     public Map<String, Integer> dictTaxes;
     public Map<String, Integer> monthDictTaxes;
@@ -26,6 +29,8 @@ public class taxFrame extends requisitesWStatus {
     @Override
     public int control() {
         if (!this.status)
+            return 0;
+        if (this.value.equals("0"))
             return 0;
         if (isNull){
             this.value="0";

@@ -6,6 +6,10 @@ import Essentials.Specifications.inn;
 
 public class inn_u extends inn  {
     public boolean isForeign=false;
+    public inn_u(){
+
+    }
+
     public inn_u(String value_){
         value = value_;
         this.isForeign=false;

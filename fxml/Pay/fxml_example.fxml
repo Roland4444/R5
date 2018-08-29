@@ -30,7 +30,7 @@
         <TextField fx:id="kpp_payer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
         <Label styleClass="desc" text="Номер счета" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="5" />
-        <TextField fx:id="number_acc_payer" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <TextField fx:id="number_acc_payer"  prefWidth="40" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
         <Label styleClass="desc" text="Банк плательшика" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="6" />
         <TextField fx:id="bank_name_payer" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -42,7 +42,7 @@
         <TextField fx:id="bank_bik_payer" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 
         <Label styleClass="desc" text="Коррсчет банка плательшика" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="9" />
-        <TextField fx:id="bank_corr_payer" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <TextField fx:id="bank_corr_payer" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.columnSpan="1"/>
 
 
         <Label styleClass="desc" text="Наименование" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="2" />
@@ -55,7 +55,7 @@
         <TextField fx:id="kpp_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="4" />
 
         <Label styleClass="desc" text="Номер счета" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="5" />
-        <TextField fx:id="accnumber_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+        <TextField fx:id="accnumber_beneficiary" prefWidth="40" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.columnSpan="2" />
 
         <Label styleClass="desc" text="Банк получателя" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="6" />
         <TextField fx:id="bank_name_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="6" />
@@ -67,7 +67,7 @@
         <TextField fx:id="bank_bik_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="8" />
 
         <Label styleClass="desc" text="Коррсчет банка плательшика" GridPane.columnIndex="3" GridPane.columnSpan="1" GridPane.rowIndex="9" />
-        <TextField fx:id="bank_corrnumber_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+        <TextField fx:id="bank_corrnumber_beneficiary" GridPane.columnIndex="4" GridPane.rowIndex="9" GridPane.columnSpan="2"/>
 
         <Label styleClass="desc" text="КБК получателя" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="10" />
         <TextField fx:id="bank_kbk_beneficiar" GridPane.columnIndex="3" GridPane.rowIndex="10" />
@@ -95,6 +95,9 @@
                     <String fx:value="5" />
                 </FXCollections>
             </items>
+            <value>
+                <String fx:value="1" />
+            </value>
         </ComboBox>
 
         <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="17" GridPane.columnSpan="10">
@@ -109,6 +112,9 @@
 
         <Label styleClass="desc" text="Cтатус составителя" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="11" />
         <TextField fx:id="status" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+
+        <Label styleClass="desc" text="Comment" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="12" />
+        <TextField fx:id="comment" GridPane.columnIndex="1" GridPane.rowIndex="12" />
 
         <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="18" text="67675766575757567656656757" />
         <Button  text="Button" GridPane.rowIndex="14" onAction="#alarm"/>

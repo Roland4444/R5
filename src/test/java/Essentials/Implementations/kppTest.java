@@ -23,8 +23,6 @@ public class kppTest {
             dict.put('9',1);
     }
 
-
-
     @Test
     public void control() {
         kpp mock = new kpp("301501001");

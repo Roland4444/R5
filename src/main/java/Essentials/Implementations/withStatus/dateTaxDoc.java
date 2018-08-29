@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class dateTaxDoc extends requisitesWStatus {
+    public dateTaxDoc(){
+
+    }
 
 
     public dateTaxDoc (String value, boolean status){
@@ -24,6 +27,8 @@ public class dateTaxDoc extends requisitesWStatus {
     @Override
     public int control(){
         if (!this.status)
+            return 0;
+        if (this.value.equals("0"))
             return 0;
         if (isNull){
             this.value="0";

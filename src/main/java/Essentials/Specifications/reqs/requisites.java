@@ -6,6 +6,8 @@ import java.util.Map;
 
 public abstract class requisites implements Serializable {
 
+
+
     public String value=null;
     public Map<Character, Integer> dictionary;
     public abstract int control();
@@ -15,5 +17,9 @@ public abstract class requisites implements Serializable {
                 return false;
         }
         return true;
+    }
+    public int setValue(String value){
+        this.value = value;
+        return control();
     }
 }

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 
 import static org.junit.Assert.*;
@@ -20,7 +21,7 @@ public class FreezerTest {
         Freezer fr = new Freezer();
         PaymentModel pm = new PaymentModel();
         pm.summ= new summTransaction();
-        pm.summ.rubles=12;
+        pm.summ.rubles=new BigDecimal(12);
         pm.summ.cents=22;
         PaymentModel restored = fr.restoreModel(fr.saveModel(pm));
         assertEquals(pm.summ.rubles,  restored.summ.rubles);

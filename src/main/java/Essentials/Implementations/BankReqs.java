@@ -2,7 +2,9 @@ package Essentials.Implementations;
 
 import Essentials.Implementations.reqs.*;
 
-public class BankReqs {
+import java.io.Serializable;
+
+public class BankReqs implements Serializable {
     public BankReqs(){
         this.namebank=new NameBank();
         this.corr_accnumber=new accNumber();

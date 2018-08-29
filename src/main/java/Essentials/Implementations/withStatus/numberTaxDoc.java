@@ -3,6 +3,9 @@ package Essentials.Implementations.withStatus;
 import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class numberTaxDoc  extends requisitesWStatus {
+    public numberTaxDoc(){
+
+    }
 
     public numberTaxDoc (String value, boolean status){
         this.value=value;
@@ -17,6 +20,8 @@ public class numberTaxDoc  extends requisitesWStatus {
     @Override
     public int control() {
         if (!this.status)
+            return 0;
+        if (this.value.equals("0"))
             return 0;
         if (isNull){
             this.value="0";

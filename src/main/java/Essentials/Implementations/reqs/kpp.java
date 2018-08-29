@@ -3,6 +3,9 @@ package Essentials.Implementations.reqs;
 import Essentials.Specifications.reqs.requisites;
 
 public class kpp extends requisites {
+    public kpp(){
+
+    }
     public kpp(String value){
         this.value = value;
     }

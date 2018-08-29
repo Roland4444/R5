@@ -1,11 +1,13 @@
 package Services.all.Pay.UI;
 
+import Essentials.Dictionary.Dictionary4Requisites;
+import Essentials.Dictionary.DictionaryErrors;
 import Essentials.Implementations.BankReqs;
 import Essentials.Implementations.Beneficiar;
-import Essentials.Implementations.Payer;
 import Essentials.Implementations.reqs.*;
 import Essentials.Implementations.summTransaction;
 import Services.all.Pay.PaymentModel;
+import Services.all.Pay.ReqsWithStatus;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -15,14 +17,21 @@ import javafx.stage.Stage;
 import utils.Freezer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 
 public class Controller    {
-    BankReqs br = new BankReqs();
+    boolean initalready=false;
+    DictionaryErrors dicTErrors=new DictionaryErrors();;
+    Dictionary4Requisites dictReqs = new Dictionary4Requisites();
+    public void initDictErrors(){
+    }
+    BankReqs br1 = new BankReqs();
+    BankReqs br2 = new BankReqs();
     PaymentModel pm = new PaymentModel();
     Freezer fr = new Freezer();
     @FXML
@@ -49,8 +58,7 @@ public class Controller    {
     private TextField inn_beneficiary;
     @FXML
     private TextField kpp_beneficiary;
-    @FXML
-    private TextField accnumber_payer;
+
     @FXML
     private TextField bank_payer;
     @FXML
@@ -61,6 +69,9 @@ public class Controller    {
 
     @FXML
     private TextField bank_adress_beneficiary;
+
+    @FXML
+    private TextField comment;
 
     @FXML
     private TextField bank_bik_beneficiary;
@@ -116,11 +127,15 @@ public class Controller    {
     }
 
     public void SaveModel(ActionEvent actionEvent) throws IOException {
+        if (linkModel() != 0) {
+            error("исправьте ошибки!");
+            return;
+        }
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showSaveDialog(new Stage());
 
         if(file != null){
-            linkModel();
+
             FileOutputStream fos = new FileOutputStream(file.toString());
             fos.write(fr.saveModel(pm));
             fos.close();
@@ -141,51 +156,183 @@ public class Controller    {
             PaymentModel pm2 = fr.restoreModel(Files.readAllBytes(file.toPath()));
             loadM(pm2);
 
+
+
         }
     }
 
     public void loadM(PaymentModel pm){
         System.out.println(pm.beneficiar.Name);
         name_beneficiary.setText(pm.beneficiar.Name);
+        accnumber_beneficiary.setText(pm.beneficiar.bankReqs.get(0).accNumber.value);
+        bank_bik_beneficiary.setText(pm.beneficiar.bankReqs.get(0).bik.value);
+        bank_corrnumber_beneficiary.setText(pm.beneficiar.bankReqs.get(0).corr_accnumber.value);
+        bank_name_beneficiary.setText(pm.beneficiar.bankReqs.get(0).namebank.value);
+        bank_adress_beneficiary.setText(pm.beneficiar.bankReqs.get(0).addressbank.value);
+        inn_beneficiary.setText(pm.beneficiar.inn.value);
+        kpp_beneficiary.setText(pm.beneficiar.kpp.value);
+
+        name_payer.setText(pm.payer.Name);
+        number_acc_payer.setText(pm.payer.bankReqs.get(0).accNumber.value);
+        bank_bik_payer.setText(pm.payer.bankReqs.get(0).bik.value);
+        bank_corr_payer.setText(pm.payer.bankReqs.get(0).corr_accnumber.value);
+        bank_name_payer.setText(pm.payer.bankReqs.get(0).namebank.value);
+        bank_adress_payer.setText(pm.payer.bankReqs.get(0).addressbank.value);
+        inn_payer.setText(pm.payer.inn.value);
+        kpp_payer.setText(pm.payer.kpp.value);
+        comment.setText(pm.comment);
+
+      //  bank_adress_payer.setText(pm.payer.bankReqs.get(0).addressbank.value);
+     //   number_acc_payer.setText(pm.payer.bankReqs.get(0).accNumber.value);
+     //   bank_bik_payer.setText(pm.payer.bankReqs.get(0).bik.value);
+     //   bank_corrnumber_payer.setText(pm.payer.bankReqs.get(0).corr_accnumber.value);
+     //   bank_name_payer.setText(pm.payer.bankReqs.get(0).namebank.value);
+
+        summ.setText(pm.summ.rubles.toString());
+
+
+    }
+
+    public void initmodel(){
+        pm.beneficiar= new Beneficiar();
+
+        pm.beneficiar.bankReqs=new ArrayList<BankReqs> ();
+
+        br1.addressbank=new addressBank();
+        br1.addressbank.dictionary=dictReqs.dictNumbers;
+
+        br1.accNumber=new accNumber();
+        br1.accNumber.dictionary=dictReqs.dictNumbers;
+
+        br1.bik=new bik();
+        br1.bik.dictionary=dictReqs.dictNumbers;
+
+        br1.corr_accnumber=new accNumber();
+        br1.corr_accnumber.dictionary=dictReqs.dictNumbers;
+
+        br1.namebank=new NameBank();
+        br1.namebank.dictionary=dictReqs.dictNumbers;
+
+        pm.beneficiar.kpp=new kpp();
+        pm.beneficiar.inn=new inn_u();
+
+        pm.beneficiar.setDict(dictReqs.dictNumbers);
+
+        pm.payer.bankReqs=new ArrayList<BankReqs> ();
+
+        br2.addressbank=new addressBank();
+        br2.addressbank.dictionary=dictReqs.dictNumbers;
+
+        br2.accNumber=new accNumber();
+        br2.accNumber.dictionary=dictReqs.dictNumbers;
+
+        br2.bik=new bik();
+        br2.bik.dictionary=dictReqs.dictNumbers;
+
+        br2.corr_accnumber=new accNumber();
+        br2.corr_accnumber.dictionary=dictReqs.dictNumbers;
+
+        br2.namebank=new NameBank();
+        br2.namebank.dictionary=dictReqs.dictNumbers;
+
+        pm.payer.kpp=new kpp();
+        pm.payer.inn=new inn_u();
+        pm.payer.setDict(dictReqs.dictNumbers);
+
+        pm.comment=comment.getText();
+
+        initalready=true;
+
     }
 
     public int linkModel(){
+        if (!initalready)
+            initmodel();
         pm.status=false;
-        if (status.getText().length()>1)
+        if (status.getText().length()>1){
+            normal("бюджетный платеж!");
             pm.status=true;
-
-        pm.beneficiar= new Beneficiar();
+            ReqsWithStatus reqsws = new ReqsWithStatus();
+            reqsws.oktmo.value = oktmo.getText();
+            reqsws.taxFrame.value=tax_period.getText();
+        }
         pm.beneficiar.Name=name_beneficiary.getText();
-
-
-        br.addressbank.value = bank_adress_beneficiary.getText();
-        if (br.addressbank.control() !=0){
+        if (br1.addressbank.setValue(bank_adress_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(1));
             return 1;
         }
-
-        br.accNumber.value=accnumber_beneficiary.getText();
-        br.addressbank.value=bank_adress_beneficiary.getText();
-        br.bik.value=bank_bik_beneficiary.getText();
-        br.corr_accnumber.value=bank_corrnumber_beneficiary.getText();
-        br.namebank.value = bank_name_beneficiary.getText();
-        pm.beneficiar.bankReqs.add(br);
-
-        br.accNumber.value=accnumber_payer.getText();
-        br.addressbank.value=bank_adress_payer.getText();
-        br.bik.value=bank_bik_payer.getText();
-        br.corr_accnumber.value=bank_corrnumber_payer.getText();
-        br.namebank.value = bank_name_payer.getText();
-        pm.payer.bankReqs.add(br);
-
+        if (br1.accNumber.setValue(accnumber_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(2));
+            return 2;
+        }
+        if (br1.bik.setValue(bank_bik_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(3));
+            return 3;
+        }
+        if (br1.corr_accnumber.setValue(bank_corrnumber_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(4));
+            return 4;
+        }
+        if (br1.namebank.setValue(bank_name_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(5));
+            return 5;
+        }
+        if (pm.beneficiar.inn.setValue(inn_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(50));
+            return 50;
+        }
+        if (pm.beneficiar.kpp.setValue(kpp_beneficiary.getText()) !=0){
+            error(dicTErrors.dict.get(51));
+            return 51;
+        }
+        pm.beneficiar.bankReqs.add(br1);
+        if (br2.addressbank.setValue(bank_adress_payer.getText()) !=0){
+            error(dicTErrors.dict.get(6));
+            return 6;
+        }
+        if (br2.accNumber.setValue(number_acc_payer.getText()) !=0){
+            error(dicTErrors.dict.get(7));
+            return 7;
+        }
+        if (br2.bik.setValue(bank_bik_payer.getText()) !=0){
+            error(dicTErrors.dict.get(8));
+            return 8;
+        }
+        if (br2.corr_accnumber.setValue(bank_corr_payer.getText()) !=0){
+            error(dicTErrors.dict.get(9));
+            return 9;
+        }
+        if (br2.namebank.setValue(bank_name_payer.getText()) !=0){
+            error(dicTErrors.dict.get(10));
+            return 10;
+        }
+        if (pm.payer.inn.setValue(inn_payer.getText()) !=0){
+            error(dicTErrors.dict.get(52));
+            return 52;
+        }
+        if (pm.payer.kpp.setValue(kpp_payer.getText()) !=0){
+            error(dicTErrors.dict.get(53));
+            return 53;
+        }
+        pm.payer.Name=name_payer.getText();
+        pm.payer.bankReqs.add(br2);
         pm.summ=new summTransaction();
-        pm.summ.rubles=Integer.parseInt(summ.getText());
-
-       
-
-
-
+        pm.summ.rubles=new BigDecimal(summ.getText());
+        pm.seqPayments.value = seq_pay.getValue().toString();
         return 0;
+    }
 
+    private void normal(String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(message);
+        alert.getDialogPane().setExpandableContent(new ScrollPane(new TextArea()));
+        alert.showAndWait();
+    }
 
+    private void error(String error_text) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(error_text);
+        alert.getDialogPane().setExpandableContent(new ScrollPane(new TextArea()));
+        alert.showAndWait();
     }
 }

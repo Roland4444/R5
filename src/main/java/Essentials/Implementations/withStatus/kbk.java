@@ -3,6 +3,10 @@ package Essentials.Implementations.withStatus;
 import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class kbk extends requisitesWStatus {
+    public kbk(){
+
+    }
+
 
     public kbk (String value, boolean status){
         this.value=value;
@@ -20,6 +24,9 @@ public class kbk extends requisitesWStatus {
     public int control(){
         if (!this.status)
             return 0;
+        if (this.value.equals("0"))
+            return 0;
+
         if (isNull){
             this.value="0";
             return 0;

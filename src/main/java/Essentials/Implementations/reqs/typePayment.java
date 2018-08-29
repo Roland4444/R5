@@ -11,6 +11,8 @@ public class typePayment extends requisites {
         this.value = value;
     }
 
+
+
     @Override
     public int control() {
         if (!isnumber(this.value))
