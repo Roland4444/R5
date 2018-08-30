@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class dateTaxDoc extends requisitesWStatus {
     public dateTaxDoc(){
-
+        this.status=true;
     }
 
 

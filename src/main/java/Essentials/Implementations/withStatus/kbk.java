@@ -4,7 +4,7 @@ import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class kbk extends requisitesWStatus {
     public kbk(){
-
+        this.status=true;
     }
 
 

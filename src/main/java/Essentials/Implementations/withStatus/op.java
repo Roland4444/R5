@@ -4,7 +4,7 @@ import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class op extends requisitesWStatus {
     public op(){
-
+        this.status=true;
     }
     public op (String value, boolean status){
         this.value=value;

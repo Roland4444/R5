@@ -2,7 +2,9 @@ package Essentials.Specifications.reqs;
 
 import Essentials.Specifications.reqs.requisites;
 
-public abstract class requisitesWStatus extends requisites {
+import java.io.Serializable;
+
+public abstract class requisitesWStatus extends requisites implements Serializable {
     public boolean isNull;
     public boolean status;
 

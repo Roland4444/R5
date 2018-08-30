@@ -31,6 +31,21 @@
 -fx-color: #ffffff;
 }
 
+.save{
+-fx-text-fill: #ffffff;
+    -fx-background-color: #0000ff;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 5;
+}
+
+.load{
+-fx-text-fill: #000000;
+    -fx-background-color: #ffff00;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 5;
+}
 .button1{
     -fx-text-fill: #000000;
     -fx-background-color: #ffffff;

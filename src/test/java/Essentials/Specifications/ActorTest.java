@@ -11,6 +11,6 @@ public class ActorTest {
     @Test
     public void setDict() {
         ArrayList <String> arr = new ArrayList();
-        arr.add();
+
     }
 }

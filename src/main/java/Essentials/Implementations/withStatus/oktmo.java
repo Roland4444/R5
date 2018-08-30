@@ -4,7 +4,7 @@ import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class oktmo extends requisitesWStatus {
     public oktmo(){
-
+        this.status=true;
     }
     public oktmo (String value, boolean status){
         this.value=value;

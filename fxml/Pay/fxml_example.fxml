@@ -82,7 +82,7 @@
         <TextField fx:id="tax_period" GridPane.columnIndex="3" GridPane.rowIndex="13" />
 
         <Label styleClass="desc" text="Срок платежа" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="14" />
-        <DatePicker fx:id="time_pay" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+        <TextField fx:id="time_pay" GridPane.columnIndex="3" GridPane.rowIndex="14" />
 
         <Label fx:id="chf" styleClass="desc" text="Очер. платежа" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="15" />
         <ComboBox fx:id="seq_pay" prefHeight="20.0" prefWidth="70.0" GridPane.columnIndex="3" GridPane.rowIndex="15" >
@@ -102,8 +102,8 @@
 
         <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="17" GridPane.columnSpan="10">
             <children>
-                <Button onAction="#SaveModel" prefWidth="100.0" styleClass="button1" text="SaveModel" />
-                <Button onAction="#LoadModel" prefWidth="100.0" styleClass="button1" text="LoadModel" />
+                <Button onAction="#SaveModel" prefWidth="100.0" styleClass="save" text="SaveModel" />
+                <Button onAction="#LoadModel" prefWidth="100.0" styleClass="load" text="LoadModel" />
             </children>
         </HBox>
 

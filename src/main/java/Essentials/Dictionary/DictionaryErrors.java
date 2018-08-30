@@ -20,6 +20,14 @@ public class DictionaryErrors {
         this.dict.put(51,"ошибка в кпп получателя");
         this.dict.put(52,"ошибка в инн отправителя");
         this.dict.put(53,"ошибка в кпп отправителя");
+        this.dict.put(200,"ошибка в oktmo получателя");
+        this.dict.put(201,"ошибка в kbk получателя");
+        this.dict.put(202,"ошибка в ОП");
+        this.dict.put(203,"ошибка в налоговом периоде");
+        this.dict.put(204,"ошибка в сроках платежа");
+        this.dict.put(205,"ошибка в status");
+        this.dict.put(205,"ошибка в 207");
+
 
 
 

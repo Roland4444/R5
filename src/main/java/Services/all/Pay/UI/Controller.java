@@ -15,13 +15,15 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import utils.Freezer;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.time.chrono.Chronology;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Controller    {
@@ -58,41 +60,24 @@ public class Controller    {
     private TextField inn_beneficiary;
     @FXML
     private TextField kpp_beneficiary;
-
-    @FXML
-    private TextField bank_payer;
     @FXML
     private TextField accnumber_beneficiary;
-
-    @FXML
-    private TextField bank_beneficiary;
-
     @FXML
     private TextField bank_adress_beneficiary;
-
     @FXML
     private TextField comment;
-
     @FXML
     private TextField bank_bik_beneficiary;
-
     @FXML
     private TextField bank_corrnumber_beneficiary;
-
     @FXML
     private TextField bank_name_beneficiary;
-
     @FXML
     private TextField bank_kbk_beneficiar;
-
     @FXML
     private TextField summ;
     @FXML
     private TextField status;
-
-    @FXML
-    private TextField bank_corrnumber_payer;
-
     @FXML
     private TextField oktmo;
     @FXML
@@ -100,7 +85,7 @@ public class Controller    {
     @FXML
     private TextField tax_period;
     @FXML
-    private DatePicker time_pay;
+    private TextField time_pay;
     @FXML
     private	ComboBox seq_pay;
     @FXML
@@ -133,18 +118,11 @@ public class Controller    {
         }
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showSaveDialog(new Stage());
-
         if(file != null){
-
             FileOutputStream fos = new FileOutputStream(file.toString());
             fos.write(fr.saveModel(pm));
             fos.close();
-
-
         }
-
-
-
     }
 
     public void LoadModel(ActionEvent actionEvent) throws IOException {
@@ -155,9 +133,6 @@ public class Controller    {
         if (file != null) {
             PaymentModel pm2 = fr.restoreModel(Files.readAllBytes(file.toPath()));
             loadM(pm2);
-
-
-
         }
     }
 
@@ -182,18 +157,21 @@ public class Controller    {
         kpp_payer.setText(pm.payer.kpp.value);
         comment.setText(pm.comment);
 
-      //  bank_adress_payer.setText(pm.payer.bankReqs.get(0).addressbank.value);
-     //   number_acc_payer.setText(pm.payer.bankReqs.get(0).accNumber.value);
-     //   bank_bik_payer.setText(pm.payer.bankReqs.get(0).bik.value);
-     //   bank_corrnumber_payer.setText(pm.payer.bankReqs.get(0).corr_accnumber.value);
-     //   bank_name_payer.setText(pm.payer.bankReqs.get(0).namebank.value);
-
         summ.setText(pm.summ.rubles.toString());
+        if (pm.status){
+            status.setText(pm.reqs_wstatus.statusvalue.value);
+            oktmo.setText(pm.reqs_wstatus.oktmo.value);
+            bank_kbk_beneficiar.setText(pm.reqs_wstatus.kbk.value);
+            OP.setText(pm.reqs_wstatus.op.value);
+            tax_period.setText(pm.reqs_wstatus.taxFrame.value);
+            time_pay.setText(pm.reqs_wstatus.dateTaxDoc.value);
+        }
 
 
     }
 
     public void initmodel(){
+
         pm.beneficiar= new Beneficiar();
 
         pm.beneficiar.bankReqs=new ArrayList<BankReqs> ();
@@ -245,6 +223,58 @@ public class Controller    {
 
     }
 
+    public Map<Integer, ReqsWithStatus> getReqsWS(){
+        Map<Integer, ReqsWithStatus> result = new HashMap();
+        ReqsWithStatus reqsws = new ReqsWithStatus();
+        reqsws.taxFrame.dictTaxes = dictReqs.dictTaxes;
+        reqsws.taxFrame.dictNumbers=dictReqs.dictNumbers;
+        reqsws.taxFrame.halfDictTaxes=dictReqs.halfDictTaxes;
+        reqsws.taxFrame.monthDictTaxes=dictReqs.monthDictTaxes;
+        reqsws.taxFrame.qrDictTaxes=dictReqs.qrDictTaxes;
+        if (reqsws.oktmo.setValue(oktmo.getText())!=0){
+            error(dicTErrors.dict.get(200));
+            result.put(20, reqsws);
+            return result;
+        }
+        if (reqsws.kbk.setValue(bank_kbk_beneficiar.getText())!=0){
+            error(dicTErrors.dict.get(201));
+            result.put(21, reqsws);
+            return result;
+        }
+        if (reqsws.op.setValue(OP.getText())!=0){
+            error(dicTErrors.dict.get(202));
+            result.put(22, reqsws);
+            return result;
+        }
+        if (reqsws.taxFrame.setValue(tax_period.getText())!=0){
+            error(dicTErrors.dict.get(203));
+            result.put(23, reqsws);
+            return result;
+        }
+
+        if ( time_pay.getText()==null){
+            error(dicTErrors.dict.get(204));
+            result.put(24, null);
+            return result;
+        }
+
+        if (reqsws.dateTaxDoc.setValue(time_pay.getText().toString())!=0){
+            System.out.println(reqsws.dateTaxDoc.setValue(time_pay.getText().toString()));
+            error(dicTErrors.dict.get(207));
+            result.put(24, reqsws);
+            return result;
+        }
+        if (reqsws.statusvalue.setValue(status.getText())!=0){
+            error(dicTErrors.dict.get(205));
+            result.put(25, reqsws);
+            return result;
+        }
+
+        result.put(0, reqsws);
+        return result;
+
+    }
+
     public int linkModel(){
         if (!initalready)
             initmodel();
@@ -252,9 +282,12 @@ public class Controller    {
         if (status.getText().length()>1){
             normal("бюджетный платеж!");
             pm.status=true;
-            ReqsWithStatus reqsws = new ReqsWithStatus();
-            reqsws.oktmo.value = oktmo.getText();
-            reqsws.taxFrame.value=tax_period.getText();
+            pm.reqs_wstatus=new ReqsWithStatus();
+            if (getReqsWS().get(0)!=null) {
+                normal("данные бюджетного платежа корректны!");
+                pm.reqs_wstatus = getReqsWS().get(0);
+            }
+            else return 555;
         }
         pm.beneficiar.Name=name_beneficiary.getText();
         if (br1.addressbank.setValue(bank_adress_beneficiary.getText()) !=0){

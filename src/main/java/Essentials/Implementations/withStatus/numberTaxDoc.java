@@ -4,7 +4,7 @@ import Essentials.Specifications.reqs.requisitesWStatus;
 
 public class numberTaxDoc  extends requisitesWStatus {
     public numberTaxDoc(){
-
+        this.status=true;
     }
 
     public numberTaxDoc (String value, boolean status){

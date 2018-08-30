@@ -1,9 +1,10 @@
 package Essentials.Dictionary;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Dictionary4Requisites {
+public class Dictionary4Requisites implements Serializable {
     public Dictionary4Requisites(){
         dictNumbers= new HashMap<>();
         dictNumbers.put('0',0);

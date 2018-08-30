@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class taxFrame extends requisitesWStatus {
     public taxFrame(){
-
+        this.status=true;
     }
     public Map<Character, Integer> dictNumbers ;
     public Map<String, Integer> dictTaxes;
@@ -36,6 +36,8 @@ public class taxFrame extends requisitesWStatus {
             this.value="0";
             return 0;
         }
+        if (this.value.length()!=10)
+            return 9;
         abr_period = this.value.substring(0, 2);
         period = this.value.substring(3, 5);
         if (dictTaxes.get(abr_period) == null)
